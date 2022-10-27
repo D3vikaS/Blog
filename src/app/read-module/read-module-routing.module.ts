@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReadComponent } from './read/read.component';
 
 const routes: Routes = [
- { path :' ',
+ { path :'',
   component :ReadComponent,
-}
+},
 ];
 
 @NgModule({

@@ -1,0 +1,27 @@
+<!-- <div class="row" >
+  <div class="col-md-4"  *ngFor="let blog of blogList" >
+    <div class="card">
+      <h5 class="card-header" >{{blog.title}}</h5>
+      <div class="card-body">
+        <p class="card-text contentClass">{{blog.content?blog.content:"--"}}</p>
+        <p class="card-text">~ {{blog.author}}</p>
+        <a href="#" class="btn btn-primary button">Edit</a>
+        <a href="#" class="btn btn-primary button">Preview</a>
+        <a href="#" class="btn btn-primary button" >Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+<div >
+  <div  *ngFor="let blog of blogList">
+    <app-indi-card></app-indi-card>
+
+  </div>
+
+
+
+
+</div>
+
+
