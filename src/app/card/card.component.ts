@@ -40,9 +40,11 @@ export class CardComponent implements OnInit {
 
 
   dataToDisplay:blogContent ={} as blogContent
+   preview =false
   showData(index:number){
     this.dataToDisplay=this.blogList[index]
-
+    this.preview =true
+    // this.preview=!this.preview
 
   }
 
