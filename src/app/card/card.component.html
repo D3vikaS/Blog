@@ -13,11 +13,11 @@
   </div>
 </div>
  -->
-<div  class="container">
+<div class="container">
   <div>
-    <div  *ngFor="let blog of blogList , let i=index" >
+    <div *ngFor="let blog of blogList , let i=index">
       <!-- <app-indi-card [blog]="blog"></app-indi-card> -->
-      <div class="d-flex align-items-start" >
+      <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <div class="card leftcard">
             <b>{{blog.title}}</b>
@@ -26,11 +26,17 @@
             <br>
             {{blog.author}}
 
-              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <button (click)="showData(i)" class="nav-link active button btn btn-outline-primary " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Preview</button>
-                <button class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Edit</button>
-                <button class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Delete</button>
-              </ul>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <button (click)="showData(i)" class="nav-link active button btn btn-outline-primary "
+                id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
+                aria-controls="v-pills-home" aria-selected="true">Preview</button>
+              <button (click)="editData(i)" class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill"
+                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                aria-selected="true">Edit</button>
+              <button (click)="deleteData(i)" class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill"
+                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                aria-selected="true">Delete</button>
+            </ul>
 
 
           </div>
@@ -39,15 +45,10 @@
       </div>
     </div>
   </div>
-<div>
-  <app-indi-card [blog] = "dataToDisplay"  [pview]="preview"></app-indi-card>
-</div>
+
+  <div>
+    <app-indi-card (Pv)="visible($event)" [blog]="dataToDisplay" [pview]="preview"  [editData]="clickEdit"></app-indi-card>
+    <app-delete-data [blog]="dataToDisplay" [clickDel]="clickDelete"></app-delete-data>
+  </div>
 
 </div>
-
-
-
-
-
-
-

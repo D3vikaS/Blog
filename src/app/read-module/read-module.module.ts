@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ReadModuleRoutingModule } from './read-module-routing.module';
 import { ReadComponent } from './read/read.component';
+import { BlogServerService } from '../blog-server.service';
 
 
 @NgModule({
@@ -16,5 +17,9 @@ import { ReadComponent } from './read/read.component';
   // exports:[
   //   ReadComponent
   // ]
+
+  providers:[
+    BlogServerService
+  ],
 })
 export class ReadModuleModule { }

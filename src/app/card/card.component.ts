@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { blogContent } from '../blogcontent';
+import { BlogServerService } from '../blog-server.service';
 
 @Component({
   selector: 'app-card',
@@ -7,28 +8,11 @@ import { blogContent } from '../blogcontent';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  blogList:blogContent[] =[
-    {
-      title:"abc",
-      content:"orem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClass orem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      author:"meme"
-    },
-    {
-      title:"cdf",
-      content:"orem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClass orem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassorem Ipsum is simply dummy text of the printing and typesetting contentClasscontentClasscontentClassindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      author:"meme"
-    },
-    {
-      title:"bla bla",
-      content:"",
-      author:"meme"
-    },
-    {
-      title:"uauau",
-      content:"orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      author:"meme"
-    },
-  ]
+
+  constructor(public blogService:BlogServerService) {
+
+  }
+  blogList:blogContent[] =[];
 
 
 
@@ -43,16 +27,34 @@ export class CardComponent implements OnInit {
    preview =false
   showData(index:number){
     this.dataToDisplay=this.blogList[index]
-    this.preview =true
-    // this.preview=!this.preview
+    // this.preview =!this.preview;
+    this.preview=true;
+    // console.log(this.preview);
+  }
+
+  clickDelete=false
+  deleteData(index:number){
+    console.log("delete it"+ index);
+    this.dataToDisplay=this.blogList[index]
+    this.clickDelete=true;
+  }
+
+  clickEdit:boolean=false
+  editData(index:Number){
+    this.clickEdit = true
+  }
+
+  // to show the blog once privew button is clicked.
+  visible(event :any){
+    // console.log(event)
+    this.preview=event
 
   }
 
-  constructor() {
-
-   }
 
   ngOnInit(): void {
+
+    this.blogList=this.blogService.getData();
   }
 
 

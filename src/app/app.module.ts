@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { CommonModule } from '@angular/common';
 import { IndiCardComponent } from './indi-card/indi-card.component';
+import { DeleteDataComponent } from './delete-data/delete-data.component';
 // import { ReadModuleModule } from './read-module/read-module.module';
 // // import { ReadComponent } from './read-module/read/read.component';
 
@@ -15,6 +16,8 @@ import { IndiCardComponent } from './indi-card/indi-card.component';
     AppComponent,
     CardComponent,
     IndiCardComponent,
+    DeleteDataComponent,
+
 
   ],
   imports: [

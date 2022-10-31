@@ -3,15 +3,21 @@
   <div class="card" *ngIf="pview">
     <b >{{blog.title}}</b>
     <br>
-    {{blog.content ? blog.content : "--"}}
+    <ng-container *ngIf="editData"; else maincontent>
+      <p>EDIT DATA is working</p>
+    </ng-container>
+    <ng-container #maincontent>
+      {{blog.content ? blog.content : "--"}}
+    </ng-container>
+
     <br>
     <br>
     ~{{blog.author}}
-    <button (click)="pview=!pview" class="button btn btn-outline-primary">OK</button>
+    <button (click)="visible()" class="button btn btn-outline-primary">OK</button>
 </div>
 </ng-container>
 
 
-          <!-- <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{{blog.content ? blog.content : "--"}}</div>
-          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">{{blog.author}}</div> -->
+<!-- make user edit the api  if edit ==true make the blog content should get
+  editable maybe it should go under the above code with if else conditions-->
 
