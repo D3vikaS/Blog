@@ -12,8 +12,11 @@ import { blogContent } from '../blogcontent';
 export class IndiCardComponent implements OnInit {
   @Input() blog:blogContent={} as blogContent
   @Input() pview:any
-  @Input() editData:any
+  @Input() clickEdit:any;
+  @Input() clickDel:any;
   @Output() Pv = new EventEmitter<boolean>();
+  @Output() data = new EventEmitter<string>();
+
 
   constructor() { }
 
@@ -30,6 +33,16 @@ visible(){
 //   console.log("this is ngchange"+this.pview);
 
 // }
+
+// onEditContent(evt:any){
+//   let inputValue =String((evt.target as HTMLInputElement).value);
+//   this.blog.content+=inputValue
+//   this.data.emit(inputValue)
+
+
+// }
+
+
 
 }
 

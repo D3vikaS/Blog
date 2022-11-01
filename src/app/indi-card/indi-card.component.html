@@ -1,23 +1,21 @@
-
 <ng-container *ngIf="blog.title">
   <div class="card" *ngIf="pview">
-    <b >{{blog.title}}</b>
+    <b>{{blog.title}}</b>
     <br>
-    <ng-container *ngIf="editData"; else maincontent>
-      <p>EDIT DATA is working</p>
-    </ng-container>
-    <ng-container #maincontent>
-      {{blog.content ? blog.content : "--"}}
+    <ng-container *ngIf="clickEdit ;">
+      <!-- make user edit the api  if edit ==true make the blog content should get
+  editable maybe it should go under the above code with if else conditions-->
+      <div class="form-group">
+        <textarea type="text" rows = '70' cols="70" [(ngModel)]="blog.content"> </textarea>
+      </div>
     </ng-container>
 
+    <ng-container *ngIf="!clickEdit">
+      {{blog.content ? blog.content : "--"}}
+    </ng-container>
     <br>
     <br>
     ~{{blog.author}}
     <button (click)="visible()" class="button btn btn-outline-primary">OK</button>
-</div>
+  </div>
 </ng-container>
-
-
-<!-- make user edit the api  if edit ==true make the blog content should get
-  editable maybe it should go under the above code with if else conditions-->
-

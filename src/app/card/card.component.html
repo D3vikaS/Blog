@@ -1,18 +1,4 @@
-<!-- <div class="row" >
-  <div class="col-md-4"  *ngFor="let blog of blogList" >
-    <div class="card">
-      <h5 class="card-header" >{{blog.title}}</h5>
-      <div class="card-body">
-        <p class="card-text contentClass">{{blog.content?blog.content:"--"}}</p>
-        <p class="card-text">~ {{blog.author}}</p>
-        <a href="#" class="btn btn-primary button">Edit</a>
-        <a href="#" class="btn btn-primary button">Preview</a>
-        <a href="#" class="btn btn-primary button" >Delete</a>
-      </div>
-    </div>
-  </div>
-</div>
- -->
+
 <div class="container">
   <div>
     <div *ngFor="let blog of blogList , let i=index">
@@ -30,11 +16,13 @@
               <button (click)="showData(i)" class="nav-link active button btn btn-outline-primary "
                 id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
                 aria-controls="v-pills-home" aria-selected="true">Preview</button>
+                <!-- EDIT Button -->
               <button (click)="editData(i)" class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                 aria-selected="true">Edit</button>
+                <!-- Delete Button  -->
               <button (click)="deleteData(i)" class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" data-toggle="modal" data-target="#delete"
                 aria-selected="true">Delete</button>
             </ul>
 
@@ -47,8 +35,8 @@
   </div>
 
   <div>
-    <app-indi-card (Pv)="visible($event)" [blog]="dataToDisplay" [pview]="preview"  [editData]="clickEdit"></app-indi-card>
-    <app-delete-data [blog]="dataToDisplay" [clickDel]="clickDelete"></app-delete-data>
+    <app-indi-card (Pv)="visible($event)" [blog]="dataToDisplay" [pview]="preview"  [clickEdit]="clickEdit" ></app-indi-card>
+    <app-delete-data [blog]="dataToDisplay" [clickDel]="clickDelete"  (deleteObj)="sureDelete($event)"></app-delete-data>
   </div>
 
 </div>
