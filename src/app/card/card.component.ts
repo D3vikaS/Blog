@@ -10,7 +10,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  constructor(public blogService: BlogServerService) {}
+  constructor(public blogService: BlogServerService,private modalService: NgbModal) {}
   blogList: blogContent[] = [];
 
   maxLen(value: string) {
@@ -22,9 +22,11 @@ export class CardComponent implements OnInit {
   // dataToDisplay is single object and that goes to blog
   dataToDisplay: blogContent = {} as blogContent;
   preview = false;
+  indexValue = 0;
   showData(index: number) {
     this.dataToDisplay = this.blogList[index];
     this.preview = true;
+
   }
 
   // to show the blog once privew button is clicked.
@@ -42,24 +44,30 @@ export class CardComponent implements OnInit {
   // sending blog data to delete component
   clickDelete = false;
   deleteDAta = false;
-  indexValue = 0;
-  deleteData(index: number) {
-    console.log('delete it' + index);
-    this.dataToDisplay = this.blogList[index];
-    this.clickDelete = true;
-    this.indexValue = index;
+
+  // open(index: number) {
+  //   console.log('delete it' + index);
+  //   this.dataToDisplay = this.blogList[index];
+  //   this.clickDelete = true;
+  //   this.indexValue = index;
+  // }
+
+  openModel(){
+    const modalRef = this.modalService.open(DeleteDataComponent);
+
   }
 
-  //adding value to blog content
-  sureDelete(event: any) {
-    if (event === true) {
-      this.deleteDAta = true;
-      if (this.deleteDAta == true) {
-        this.blogList.splice(this.indexValue, 1);
-        
-      }
-    }
-  }
+  //deleting value to blog content
+  // sureDelete(event: any) {
+  //   if (event === true) {
+  //     this.deleteDAta = true;
+  //     if (this.deleteDAta == true) {
+  //       this.blogList.splice(this.indexValue, 1);
+  //       this.clickDelete=false
+
+  //     }
+  //   }
+  // }
 
   ngOnInit(): void {
     this.blogList = this.blogService.getData();

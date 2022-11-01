@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { blogContent } from '../blogcontent';
 
 @Component({
   selector: 'app-delete-data',
@@ -7,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./delete-data.component.css'],
 })
 export class DeleteDataComponent implements OnInit {
-  @Input() blog: any;
+  @Input() blog:any;
   @Input() clickDel: any;
   @Output() deleteObj = new EventEmitter<boolean>();
   constructor() {}
