@@ -1,21 +1,37 @@
-<ng-container>
-  <div class="modal" tabindex="-1" role="dialog" id="delete">
-    <div class="modal-dialog" role="document">
+
+
+    <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" id ="delete">
           <h5 class="modal-title">DISCLAMER</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to {{blog.title}} ??</p>
+          <p>Are you sure you want to  {{blog.title}}  ??</p>
         </div>
         <div class="modal-footer">
-          <button (click)="deleteData()" type="button" class="btn btn-primary">Delete</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button (click)="deleteData();" data-dismiss="" type="button" class="btn btn-primary">Delete</button>
+          <button (click)="closeModal();" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+
+
+
+
+<!-- <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirmation Modal</h4>
+      <div class="modal-body">
+        Are you sure you wanna delete {{blog.title}}'s blog ?
+      </div>
+      <div class="modal-footer">
+        <button (click)="deleteData();" data-dismiss="" type="button" class="btn btn-primary">Delete</button>
+        <button (click)="closeModal();" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-</ng-container>
+</div> -->

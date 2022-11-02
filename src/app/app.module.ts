@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { IndiCardComponent } from './indi-card/indi-card.component';
 import { DeleteDataComponent } from './delete-data/delete-data.component';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 // import { ReadModuleModule } from './read-module/read-module.module';
 // // import { ReadComponent } from './read-module/read/read.component';
 
@@ -20,7 +20,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IndiCardComponent,
     DeleteDataComponent,
 
-
   ],
   imports: [
     BrowserModule,
@@ -30,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgbModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [NgbActiveModal],
+  bootstrap: [AppComponent],
+  entryComponents : [DeleteDataComponent]
 })
 export class AppModule { }

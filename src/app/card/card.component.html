@@ -21,9 +21,8 @@
                 data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                 aria-selected="true">Edit</button>
                 <!-- Delete Button  -->
-              <button (click)="openModel()" class="nav-link  button btn btn-outline-primary" id="v-pills-home-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" data-toggle="modal" data-target="#delete"
-                aria-selected="true">Delete</button>
+              <button (click)="open(blog)" class="nav-link  button btn btn-outline-primary"  type="button" role="tab" aria-controls="v-pills-home"
+                aria-selected="true" data-toggle="modal">Delete</button>
             </ul>
 
 
@@ -36,7 +35,7 @@
 
   <div>
     <app-indi-card (Pv)="visible($event)" [blog]="dataToDisplay" [pview]="preview"  [clickEdit]="clickEdit" ></app-indi-card>
-    <app-delete-data [blog]="dataToDisplay" [clickDel]="clickDelete"  ></app-delete-data>
+    <!-- <app-delete-data [blog]="dataToDisplay" [clickDel]="clickDelete"  [modalRef]="modalRef"  (deleteObj)="sureDelete($event)"></app-delete-data> -->
   </div>
 
 </div>

@@ -1,0 +1,14 @@
+.modal-backdrop
+{
+  z-index: 1 !important;
+}
+.modal-backdrop.show
+{
+  display: none !important;
+}
+.light-blue-backdrop{
+  z-index: 1 !important;
+  }
+  .modal-backdrop {
+    z-index: 1 !important;
+  }

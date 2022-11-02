@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { blogContent } from '../blogcontent';
 import { BlogServerService } from '../blog-server.service';
 import { DeleteDataComponent } from '../delete-data/delete-data.component';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  ModalDismissReasons,
+  NgbActiveModal,
+  NgbModal,
+} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-card',
@@ -10,7 +15,11 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  constructor(public blogService: BlogServerService,private modalService: NgbModal) {}
+  constructor(
+    public blogService: BlogServerService,
+    private modalService: NgbModal,
+    public modalRef: NgbActiveModal
+  ) {}
   blogList: blogContent[] = [];
 
   maxLen(value: string) {
@@ -26,7 +35,6 @@ export class CardComponent implements OnInit {
   showData(index: number) {
     this.dataToDisplay = this.blogList[index];
     this.preview = true;
-
   }
 
   // to show the blog once privew button is clicked.
@@ -45,29 +53,32 @@ export class CardComponent implements OnInit {
   clickDelete = false;
   deleteDAta = false;
 
-  // open(index: number) {
-  //   console.log('delete it' + index);
-  //   this.dataToDisplay = this.blogList[index];
-  //   this.clickDelete = true;
-  //   this.indexValue = index;
-  // }
 
-  openModel(){
-    const modalRef = this.modalService.open(DeleteDataComponent);
+  open(blog:any) {
+    let modalRef = this.modalService.open(DeleteDataComponent, { backdropClass: 'light-blue-backdrop' });
+    modalRef.componentInstance.blog = blog
 
+    modalRef.result.then((result:any)=>{
+      if (result==true){
+        this.sureDelete(result)
+        
+
+      }
+      //no else as of now
+
+    })
   }
 
   //deleting value to blog content
-  // sureDelete(event: any) {
-  //   if (event === true) {
-  //     this.deleteDAta = true;
-  //     if (this.deleteDAta == true) {
-  //       this.blogList.splice(this.indexValue, 1);
-  //       this.clickDelete=false
-
-  //     }
-  //   }
-  // }
+  sureDelete(event: any) {
+    if (event === true) {
+      this.deleteDAta = true;
+      if (this.deleteDAta == true) {
+        this.blogList.splice(this.indexValue, 1);
+        // this.modalRef.close();
+      }
+    }
+  }
 
   ngOnInit(): void {
     this.blogList = this.blogService.getData();
