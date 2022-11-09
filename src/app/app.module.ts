@@ -9,6 +9,7 @@ import { IndiCardComponent } from './indi-card/indi-card.component';
 import { DeleteDataComponent } from './delete-data/delete-data.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 // import { ReadModuleModule } from './read-module/read-module.module';
 // // import { ReadComponent } from './read-module/read/read.component';
 
@@ -27,7 +28,8 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     // ReadModuleModule
     CommonModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent],

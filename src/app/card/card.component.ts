@@ -18,9 +18,13 @@ export class CardComponent implements OnInit {
   constructor(
     public blogService: BlogServerService,
     private modalService: NgbModal,
-    public modalRef: NgbActiveModal
+    // public modalRef: NgbActiveModal
+
   ) {}
+
+
   blogList: blogContent[] = [];
+  // blogList:any
 
   maxLen(value: string) {
     value = value.substring(0, 100);
@@ -61,7 +65,7 @@ export class CardComponent implements OnInit {
     modalRef.result.then((result:any)=>{
       if (result==true){
         this.sureDelete(result)
-        
+
 
       }
       //no else as of now
@@ -81,6 +85,11 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blogList = this.blogService.getData();
+    // this.blogList = this.blogService.getData();
+    this.blogService.getAllData().subscribe((res)=>{
+      console.log(res)
+      this.blogList=res;
+
+    })
   }
 }
